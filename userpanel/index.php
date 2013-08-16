@@ -8,12 +8,7 @@ $_SESSION = array(); // Clears the $_SESSION variable
 <head>
 	<meta charset="utf-8">
 	<title>Painel de Usuário</title>
-        <link rel="stylesheet" href="default.css">
-	<style>
-	#container {
-            width: 300px;
-	}
-	</style>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
 <div id="container">
