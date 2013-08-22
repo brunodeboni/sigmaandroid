@@ -38,10 +38,10 @@
 		<!-- Conteúdo -->
 		<!-- Banner em flash -->
 		<object width="1000" height="550" id="img_content" >
-        	<param name="movie" value="swf/home.swf"></param>
-            <param name="allowFullScreen" value="true"></param>
-            <param name="allowscriptaccess" value="always"></param>
-            <embed src="swf/home.swf" type="application/x-shockwave-flash" width="1000" height="550" allowscriptaccess="always" allowfullscreen="true"></embed>
+                    <param name="movie" value="swf/home.swf"></param>
+                    <param name="allowFullScreen" value="true"></param>
+                    <param name="allowscriptaccess" value="always"></param>
+                    <embed src="swf/home.swf" type="application/x-shockwave-flash" width="1000" height="550" allowscriptaccess="always" allowfullscreen="true"></embed>
 		</object>
 		<!-- Cadastro/Download -->
 		<a id="download" href="cadastro.php"></a>

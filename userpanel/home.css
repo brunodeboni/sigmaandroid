@@ -1,6 +1,6 @@
 body{
     color: #24211D;
-    font-size: 14px;
+    font-size: 16px;
     font-family:Arial, sans-serif;
     background-image: url('../img/userpanel/fundo.png');
     background-size: 100% 100%;
@@ -10,12 +10,35 @@ body{
 
 #container {
 	background-image: url('../img/userpanel/login.png');
-	background-size: 100% 100%;
-	width: 900px;
-   
+	background-size: 950px 100%;
+	width: 950px;
+	height: 320px;
+	margin: 70px auto 0 auto;
+}
+#chamada {
+	width: 350px;
+	position: absolute;
+	margin-top: 180px;
+	margin-left: 20px;
+	font-size: 20px;
+}
+#home {
+	color: #333;
+	font-weight: bold;
+	position: absolute;
+	margin-top: 270px;
+	margin-left: 500px;
 }
 #form {
-	width: 300px;
+	width: 200px;
+	margin-left: 680px;
+	padding: 10px 20px;
+	font-weight: bold;
+	color: #FFF;
+}
+#form a {
+	color: #FFF;
+	font-size: 18px;
 }
 input {
     padding: 3px 0;
@@ -27,21 +50,10 @@ input {
     background: #FFF;
 }
 
-h1{
-    display:block;
-    margin-bottom:5px;
-    text-align:center;
-    padding:10px;
-    font-size:16px;
-    background: #6AC334;
-    color:#FFF;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
-
 button {
+	margin-top: 10px;
     padding:10px 30px;
-    background:#6AC334;
+    background:#E37003;
     color: #FFF;
     font-weight: bold;
     text-decoration: none;
@@ -55,7 +67,9 @@ button {
 }
 
 #erro {
-    margin-top: 10px;
+	margin-top: -10px;
+	margin-left: 700px;
+	padding-bottom: 10px;
     font-weight: bold;
     color: red;
 }

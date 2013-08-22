@@ -12,22 +12,24 @@ $_SESSION = array(); // Clears the $_SESSION variable
 </head>
 <body>
 <div id="container">
-	<h1>Painel de Usuário</h1>
+	<p id="chamada">
+		Portabilidade e automação de serviços do PCM são a marca da nova geração do SIGMA ANDROID.
+	</p>
+	<a id="home" href="../index.php">Voltar para o site</a>
 	<div id="form">
 		<form action="" method="post" id="form_login">
-
-			<p>Faça login com o usuário admin de sua empresa:</p>
+			
+			<p style="font-size: 18px;">Entre na sua conta!</p>
 			
 			<span class="login">Usuário</span>:<br>
 			<input type="text" name="login" id="login" maxlength="50" class="block"><br>
 	
 			<span class="senha">Senha</span>:<br/>
 			<input type="password" name="senha" id="senha" maxlength="50" class="block">
-			
-			<p>Se sua empresa ainda não possui cadastro, <a id="a-cadastro" href="../cadastro.php">preencha seus dados e baixe o aplicativo</a>.</p>
-			
+	
 			<button type="submit">Entrar</button>
-
+			
+			<p>ou <a id="a-cadastro" href="../cadastro.php">Cadastre-se!</a></p>
 		</form>
 	</div>
 
@@ -62,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		// O usuário e/ou a senha são inválidos, manda de volta pro form de login
 		echo '<div id="erro">
-				Usu&aacute;rio ou senha inv&aacute;lidos.
+				Usuário ou senha inválidos.
 			</div>';
 	}
 

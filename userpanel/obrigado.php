@@ -106,18 +106,26 @@ if (count($_POST) > 0) {
 	// POST não recebido, indica que a requisição é o retorno do Checkout PagSeguro.
 	// No término do checkout o usuário é redirecionado para este bloco.
 	?>
-	<div style="width: 600px; height: 200px; margin: auto; text-align: center; background: #FAEBD7; -webkit-border-radius: 10px; border-radius: 10px;">
-	    <h3 style="padding-top: 20px; text-align: center;">Obrigado por efetuar a compra.</h3>
-	    <a href="../index.php" style="padding:10px 30px;
-	    background:#6AC334;
-	    color: #FFF;
-	    font-weight: bold;
-	    text-decoration: none;
-	    text-align: center;
-	    border: 0;
-	    -webkit-border-radius: 5px;
-	    border-radius: 5px;">P&aacute;gina inicial</a>
-    </div>
+	<!doctype html>
+	<html>
+	<head>
+		<link rel="stylesheet" href="default.css">
+	</head>
+	<body>
+		<div style="width: 600px; height: 200px; margin: auto; text-align: center; background: #F6F7F8; -webkit-border-radius: 10px; border-radius: 10px;">
+		    <h3 style="padding-top: 20px; text-align: center;">Obrigado por efetuar a compra.</h3>
+		    <a href="../index.php" style="padding:10px 30px;
+		    background:#6AC334;
+		    color: #FFF;
+		    font-weight: bold;
+		    text-decoration: none;
+		    text-align: center;
+		    border: 0;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px;">P&aacute;gina inicial</a>
+	    </div>
+    </body>
+    </html>
     <?php
 }
 

@@ -10,13 +10,10 @@ if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <style>
-        	body {
-        		background: #FFF;
-        	}
-            #container {
-                width: 900px;
-                background: #FFFAF0;
-            }
+    	#container {
+        	width: 900px;
+            background: #F6F7F8;
+       	}
     </style>
 </head>
 <body>

@@ -4,8 +4,8 @@
 
 #download {
 	position: absolute;
-	top: 520px;
-	left: 280px;
+	margin-top: 520px;
+	margin-left: 280px;
 	width: 180px;
 	height: 75px;
 }
