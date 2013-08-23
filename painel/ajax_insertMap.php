@@ -30,7 +30,7 @@ require_once '../conexoes.inc.php';
 $db = Database::instance('mobile_provider');
 
 $sql = "select empresa, endereco, cidade, uf, telefone, email, usuario, subdominio
- from cadastro where id = :id_usuario";// and status = 1 and licenca_instalacao = 1";
+ from clientes where id = :id_usuario";
 $query = $db->prepare($sql);
 $query->execute(array(':id_usuario' => $id_usuario));
 $res = $query->fetch();

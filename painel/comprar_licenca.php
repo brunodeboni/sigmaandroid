@@ -220,7 +220,7 @@ if (isset($_POST['id_usuario'])) {
 	
 	if ($success) {
 		
-		$sqll = "select id from licenca where id_usuario = :id_usuario";
+		$sqll = "select id from licenca where cliente_id = :id_usuario";
 		$queryy = $db->prepare($sqll);
 		$queryy->execute(array(':id_usuario' => $id_usuario));
 		

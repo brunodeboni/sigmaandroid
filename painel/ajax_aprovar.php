@@ -4,7 +4,8 @@ if (isset ($_POST['id'])) {
 	require '../conexoes.inc.php';
 	$db = Database::instance('mobile_provider');
 	
-	$sql = "update cadastro set status = 1 where id = :id";
+	$sql = "update clientes_aplicativos set aprovado = 1 
+            where cliente_id = :id and aplicativo = 'sigmaandroid'";
 	$query = $db->prepare($sql);
 	$success = $query->execute(array(':id' => $_POST['id']));
 

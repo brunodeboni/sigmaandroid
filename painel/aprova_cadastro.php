@@ -78,9 +78,11 @@ if(!isset($_SESSION['487usuario'])) {
 	require '../conexoes.inc.php';
 	$db = Database::instance('mobile_provider');
     
-    $sql = "select id, empresa, cnpj, endereco, email, complemento, cidade, uf, 
-    telefone, email, usuario, subdominio
-    from cadastro where status = 0";
+    $sql = "select c.id, c.empresa, c.cnpj, c.endereco, c.email, c.complemento, c.cidade, c.uf, 
+    c.telefone, c.email, c.usuario, c.subdominio
+    from clientes as c
+    left join clientes_aplicativos as a on a.cliente_id = c.id
+    where a.aprovado = 0 and a.aplicativo='sigmaandroid'";
     $query = $db->query($sql);
     $result = $query->fetchAll();
     
