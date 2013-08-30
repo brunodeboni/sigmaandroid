@@ -46,18 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$db = new PDO('mysql:host=mysql.centralsigma.com.br;dbname=mobile_provider',
                 	'webadmin', 'webADMIN',
                 	array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-        $sql = "select usuario, senha from cadastro where usuario = :user";
+        $sql = "select email, senha from clientes where email = :user";
         $query = $db->prepare($sql);
         $query->execute(array(':user' => $user));
         $res = $query->fetch();
 
-        $usuario = $res['usuario'];
+        $usuario = $res['email'];
         $senha = $res['senha'];
 
 	if ($user == $usuario && md5($password) == $senha) {
 		session_start();
 		$_SESSION['487usuario'] = true;
-        $_SESSION['487name'] = $usuario;
+                $_SESSION['487name'] = $usuario;
 
 		// O usuário e a senha digitados foram validados, manda pra página interna
 		header("Location: comprar.php");

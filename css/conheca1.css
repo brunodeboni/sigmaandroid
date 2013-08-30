@@ -1,0 +1,60 @@
+#container {
+	height: 1090px;
+}
+
+#android {
+	position: absolute;
+	top: 110px;
+	width: 1000px;
+	height: 100px;
+}
+
+#menu-passos {
+    position: absolute;
+    top: 225px;
+    background: #FFF;
+    width: 1000px;
+	height: 60px;
+}
+#menu-passos div {
+	display: inline;
+	padding: 20px 41px;
+	text-align: center;
+	background: #7EB900;
+}
+#menu-passos div a {
+	/*color: #049900;*/
+	color: #2F529C;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#menu-selector {
+	margin-top:-10px;
+    margin: -3px auto 10px auto;
+	height: 0px;
+	width:0px;
+	line-height:0px;
+	font-size:0px;
+	border-right: 10px solid white;
+	border-top: 10px solid #7EB900;
+	border-left: 10px solid white;
+}
+
+#passos-instalacao-site, #passos-instalacao-play, 
+#passos-abertura-ss, #passos-consulta-ss {
+	position: absolute;
+    top: 325px;
+    margin-left: 25px;
+    display: none;
+}
+
+#footer {
+	position: absolute;
+	top: 890px;
+	z-index: 2;
+	width: 1000px;
+	height: 200px;
+	background: #D5E2E5;
+}

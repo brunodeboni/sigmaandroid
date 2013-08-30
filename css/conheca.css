@@ -1,5 +1,5 @@
 #container {
-	height: 1090px;
+	height: 1200px;
 }
 
 #android {
@@ -9,50 +9,36 @@
 	height: 100px;
 }
 
-#menu-passos {
-    position: absolute;
-    top: 225px;
-    background: #FFF;
-    width: 1000px;
-	height: 60px;
-}
-#menu-passos div {
-	display: inline;
-	padding: 20px 41px;
-	text-align: center;
-	background: #7EB900;
-}
-#menu-passos div a {
-	/*color: #049900;*/
-	color: #2F529C;
-	text-decoration: none;
-	font-size: 18px;
-	font-weight: bold;
-	cursor: pointer;
-}
-#menu-selector {
-	margin-top:-10px;
-    margin: -3px auto 10px auto;
-	height: 0px;
-	width:0px;
-	line-height:0px;
-	font-size:0px;
-	border-right: 10px solid white;
-	border-top: 10px solid #7EB900;
-	border-left: 10px solid white;
-}
-
-#passos-instalacao-site, #passos-instalacao-play, 
-#passos-abertura-ss, #passos-consulta-ss {
+#apresentacao {
 	position: absolute;
-    top: 325px;
-    margin-left: 25px;
-    display: none;
+	top: 225px;
+	margin: 0 25px;
+	width: 950px;
+	height: 700px;
+}
+#apresentacao h1 {
+	font-weight: bold;
+	font-size: 18px;
+	color: #00BFFF;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#apresentacao p, #apresentacao li {
+	font-size: 14px;
+	line-height: 20px;
+}
+#apresentacao ul {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+#apresentacao b {
+	color: #00BFFF;
 }
 
 #footer {
 	position: absolute;
-	top: 890px;
+	top: 1000px;
 	z-index: 2;
 	width: 1000px;
 	height: 200px;

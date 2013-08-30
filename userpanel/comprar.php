@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
 ?>
@@ -11,7 +12,7 @@ if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <style>
     	#container {
-        	width: 900px;
+            width: 900px;
             background: #F6F7F8;
        	}
     </style>
@@ -30,44 +31,49 @@ if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
             require_once '../conexoes.inc.php';
             $db = Database::instance('mobile_provider'); 
             
-            $sql = "select id, empresa, cnpj, telefone, email, licenca_instalacao from cadastro where usuario = :user";
+            $sql = "select c.id, c.empresa, c.cnpj, c.telefone, c.email, l.id as id_licenca 
+                    from clientes as c
+                    left join clientes_aplicativos as a on a.cliente_id = c.id
+                    left join licenca as l on l.cap_id = a.id
+                    where c.email = :user
+                    and a.aplicativo = :aplicativo";
             $query = $db->prepare($sql);
-            $query->execute(array(':user' => $user));
+            $query->execute(array(':user' => $user, ':aplicativo' => $_GET['aplicativo']));
             $res = $query->fetch();
-
-            $id_usuario = $res['id'];
+            
+            $cliente_id = $res['id'];
             $empresa = $res['empresa'];
             $cnpj = $res['cnpj'];
             $telefone = $res['telefone'];
             $email = $res['email'];
-            $licenca_instalacao = $res['licenca_instalacao'];
-
+            $licenca_instalacao = $res['id_licenca']; //retorna null se não houver
+            
             function geraCodigo($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false) {
-				$lmin = 'abcdefghijklmnopqrstuvwxyz';
-				$lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-				$num = '1234567890';
-				$simb = '!@#$%*-';
-				$retorno = '';
-				$caracteres = '';
-		
-				//$caracteres .= $lmin;
-				if ($maiusculas) $caracteres .= $lmai;
-				if ($numeros) $caracteres .= $num;
-				if ($simbolos) $caracteres .= $simb;
-		
-				$len = strlen($caracteres);
-				for ($n = 1; $n <= $tamanho; $n++) {
-					$rand = mt_rand(1, $len);
-					$retorno .= $caracteres[$rand-1];
-				}
-		
-				return $retorno;
+                $lmin = 'abcdefghijklmnopqrstuvwxyz';
+                $lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $num = '1234567890';
+                $simb = '!@#$%*-';
+                $retorno = '';
+                $caracteres = '';
+
+                //$caracteres .= $lmin;
+                if ($maiusculas) $caracteres .= $lmai;
+                if ($numeros) $caracteres .= $num;
+                if ($simbolos) $caracteres .= $simb;
+
+                $len = strlen($caracteres);
+                for ($n = 1; $n <= $tamanho; $n++) {
+                        $rand = mt_rand(1, $len);
+                        $retorno .= $caracteres[$rand-1];
+                }
+
+                return $retorno;
             }
 
 
             ?>
 
-            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+            <input type="hidden" name="cliente_id" value="<?php echo $cliente_id; ?>">
             <input type="hidden" name="telefone" value="<?php echo $telefone; ?>">
 
             <span>Empresa:</span>
@@ -79,12 +85,12 @@ if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
             <input type="text" class="block" value="<?php echo $email; ?>" disabled><br>
             <input type="hidden" name="email" value="<?php echo $email; ?>">
             
-            <?php if ($licenca_instalacao == 0) { ?>
+            <?php if ($licenca_instalacao == null) { ?>
 	            <!-- Itens do pagamento (ao menos um item é obrigatório) -->
 	            <input type="hidden" name="itemDescription1" value="Instalação e configuração">
 	            <input type="hidden" name="itemQuantity1" value="1">
 	            <input type="hidden" name="itemAmount1" value="500.00">
-			<?php } ?>
+            <?php } ?>
 			
             <span>Licença:</span>
             <select id="licenca" name="itemDescription2" class="block" ng-model="licenca">
@@ -97,7 +103,7 @@ if(!isset($_SESSION['487usuario'])) die("<strong>Acesso Negado!</strong>");
 
             <span>Valor:</span><br>
             <div id="valor">
-            	<?php if ($licenca_instalacao == 0) { ?>
+            	<?php if ($licenca_instalacao == null) { ?>
             		<div id="valor-subtotal">Subtotal: Instalação e configuração: R$ 500,00</div>
             		
             	<?php } ?>
@@ -185,7 +191,7 @@ function Comprar($scope) {
 
 if (isset($_POST['ref_code'])) {
     
-    $id_usuario = $_POST['id_usuario'];
+    $cliente_id = $_POST['cliente_id'];
 
     $item2 = $_POST['itemDescription2'];
     $quantidade2 = $_POST['itemQuantity2'];
@@ -214,12 +220,12 @@ if (isset($_POST['ref_code'])) {
     $db = new PDO('mysql:host=mysql.centralsigma.com.br;dbname=mobile_provider',
                 	'webadmin', 'webADMIN',
                 	array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    $sql = "insert into pagamento (id_usuario, ref_code, item1, valor1, item2, quantidade2, valor2, total, status_pagamento)
-        values (:id_usuario, :ref_code, :item1, :valor1, :item2, :quantidade2, :valor2, :total, 'Pendente')";
+    $sql = "insert into pagamento (cliente_id, ref_code, item1, valor1, item2, quantidade2, valor2, total, status_pagamento)
+        values (:cliente_id, :ref_code, :item1, :valor1, :item2, :quantidade2, :valor2, :total, 'Pendente')";
     $query = $db->prepare($sql);
     $success = $query->execute(array(
         ':ref_code' => $ref_code,
-        ':id_usuario' => $id_usuario,
+        ':cliente_id' => $cliente_id,
         ':item1' => $item1,
         ':valor1' => $valor1,
         ':item2' => $item2,

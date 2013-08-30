@@ -10,32 +10,7 @@
 	height: 75px;
 }
 
-#apresentacao {
-	position: absolute;
-	top: 670px;
-	margin: 0 25px;
-	width: 950px;
-	height: 400px;
-}
-#apresentacao h1 {
-	font-weight: bold;
-	font-size: 18px;
-	color: #00BFFF;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-#apresentacao p, #apresentacao li {
-	font-size: 14px;
-	line-height: 20px;
-}
-#apresentacao ul {
-	margin-top: 10px;
-	margin-left: 10px;
-	margin-bottom: 5px;
-}
-#apresentacao b {
-	color: #00BFFF;
-}
+
 /*
 #slider {
 	position: absolute;

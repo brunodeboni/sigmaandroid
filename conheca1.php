@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SIGMA ANDROID: Suporte</title>
+<title>SIGMA ANDROID: Conheça</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/default.css">
-    <link rel="stylesheet" type="text/css" href="css/suporte.css">
+    <link rel="stylesheet" type="text/css" href="css/conheca.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    
+      
     <script type="text/javascript" src="plugins/bruno-slider/jquery.accessible-news-slider.js"></script>
     <link type="text/css" rel="stylesheet" href="plugins/bruno-slider/themes/base.css"/>
     <link type="text/css" rel="stylesheet" href="plugins/bruno-slider/themes/default/theme.css"/>
@@ -29,8 +29,15 @@
 			<?php require_once 'header.php';?>
 	        
 	        <!-- Conteúdo -->
-	                               
-                    <!-- Menu passo-a-passo -->
+	        <!-- Animação em flash -->
+			<object width="1000" height="100" id="android">
+		        <param name="movie" value="swf/conheca.swf"></param>
+		        <param name="allowFullScreen" value="true"></param>
+		        <param name="allowscriptaccess" value="always"></param>
+		        <embed src="swf/conheca.swf" type="application/x-shockwave-flash" width="1000" height="100" allowscriptaccess="always" allowfullscreen="true"></embed>
+			</object>
+	        
+	        <!-- Menu passo-a-passo -->
 	        <div id="menu-passos">
 	        	<div><a class="#passos-instalacao-site">Instalação pelo site</a></div>
 	            <div><a class="#passos-instalacao-play">Instalação pela Play Store</a></div>
@@ -85,128 +92,10 @@
 					<li><img src="img/conheca/consulta-ss/p7.png" width="950" height="405" style="border: 0;"></li>
 					<li><img src="img/conheca/consulta-ss/p8.png" width="950" height="405" style="border: 0;"></li>
 				</ul>
-			</div>
-                        
-                        <!-- Caixas de perguntas -->
-                        <div id="boxes-wrapper">
-				<div id="left-wrapper">
-			        <!-- FAQ -->
-			        <div id="faq">
-			        	<div id="faq-title">Perguntas mais lidas</div>
-			        	<div id="faq-content">
-			        		<div class="faq-questions">
-			        			<a href="faq.php#t1">O que devo fazer para começar a usar o aplicativo SIGMA Android?</a>
-			        		</div>
-			        		<div class="faq-questions">
-			        			<a href="faq.php#t2">O que é sub-domínio?</a>
-			        		</div>
-			        		<div class="faq-questions">
-			        			<a href="faq.php#t4">Quais as funcionalidades do SIGMA Android (Versão 1.0)?</a>
-			        		</div>
-			        		<div class="faq-questions">
-			        			<a href="faq.php#t9">Qual a versão do Android compatível ao SIGMA Android?</a>
-			        		</div>
-			        		<div class="faq-questions">
-			        			<a href="faq.php">Como faço para desvincular minha conta do Skype da minha conta da Microsoft?</a>
-			        		</div>
-			        		<div class="faq-questions">
-			        			<a href="faq.php">Como faço para desvincular minha conta do Skype da minha conta da Microsoft?</a>
-			        		</div>
-			        		<div id="veja-mais"><a href="faq.php">Veja mais perguntas</a></div>
-			        	</div>
-			        </div>
-			        <!-- Botões -->
-			        <div id="botoes">
-			        	<div id="ticket">
-			        		<a href="http://redeindustrial.mysuite.com.br/clientlegume.php?param=hd_chat_gc_cad_chatdep&inf=&sl=rdi&lf=&ca=&cr=&redirect=http://redeindustrial.mysuite.com.br/empresas/rdi/central.php" target="_blank" class="btn">Abra um ticket de suporte</a>
-			        	</div>
-			        	<div id="chat">
-			        		<a href="http://redeindustrial.mysuite.com.br/clientlegume.php?param=hd_chat_gc_cad_chatdep&inf=&sl=rdi&lf=&ca=&cr=&redirect=http://redeindustrial.mysuite.com.br/empresas/rdi/central.php" target="_blank" class="btn">Acesse o chat online</a>
-			        	</div>
-			        </div>
-		        </div>
-		        <div id="right-wrapper">
-			        <!-- Baixar PDF -->
-			        <div id="pdf-box">
-			        	<table>
-			        		<tr>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_INSTALACAO_Download_via_site.pdf" target="_blank">
-							        	<img src="img/suporte/pdf.png" width="20">
-						        	</a>
-			        			</td>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_INSTALACAO_Download_via_site.pdf" target="_blank">
-							        	<span>GUIA DE INSTALAÇÃO: Download via site</span>
-						        	</a>
-			        			</td>
-			        		</tr>
-			        		<tr>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_INSTALACAO_Download_via_Play_Store.pdf" target="_blank">
-							        	<img src="img/suporte/pdf.png" width="20">
-						        	</a>
-			        			</td>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_INSTALACAO_Download_via_Play_Store.pdf" target="_blank">
-							        	<span>GUIA DE INSTALAÇÃO: Download via Play Store</span>
-						        	</a>
-			        			</td>
-			        		</tr>
-			        		<tr>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_UTILIZACAO_Abertura_de_SS.pdf" target="_blank">
-							        	<img src="img/suporte/pdf.png" width="20">
-						        	</a>
-			        			</td>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_UTILIZACAO_Abertura_de_SS.pdf" target="_blank">
-							        	<span>GUIA DE UTILIZAÇÃO: Abertura de SS</span>
-						        	</a>
-			        			</td>
-			        		</tr>
-			        		<tr>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_UTILIZACAO_Consulta_de_SS.pdf" target="_blank">
-							        	<img src="img/suporte/pdf.png" width="20">
-						        	</a>
-			        			</td>
-			        			<td>
-			        				<a class="pdf" href="download/GUIA_DE_UTILIZACAO_Consulta_de_SS.pdf" target="_blank">
-							        	<span>GUIA DE UTILIZAÇÃO: Consulta de SS</span>
-						        	</a>
-			        			</td>
-			        		</tr>
-			        		
-			        	</table>
-			        	
-			        	
-			        </div>
-			        <!-- Vídeo -->
-		        	<div id="video-box">
-			        	<div id="txt">Vídeo</div>
-			        </div>
-		        
-				</div>
-			</div>
-	    </div>
-	    	
-	    <!-- Rodapé -->
-		<?php require_once 'footer.php';?>
- 
-    </div>
+			</div>	
+	            
+
 <script>
-$(document).ready(function() {
-	$('.faq-questions a').each(function() {
-		if( $(this).html().length > 120) {
-			var new_opt = $(this).html().substring(0, 120) + '...';
-			//$(this).attr('title', $(this).val());
-			$(this).html(new_opt);
-		}
-	});
-
-});
-
 $(document).ready(function() {
 	$('#passos-instalacao-site').show();
 	$('#passos-instalacao-site').find('ul').bxSlider({
@@ -253,5 +142,13 @@ $('#menu-passos a').click(function() {
 	
 });
 </script>
+			
+	    </div>
+	    	
+	    <!-- Rodapé -->
+		<?php require_once 'footer.php';?>
+ 
+    </div>
+
 </body>
 </html>

@@ -74,13 +74,10 @@
                     <span>Telefone Comercial:</span>
                     <input type="text" id="telefone" name="telefone" class="block"><br>
 
-                    <span>E-mail:</span>
-                    <input type="text" id="email" name="email" class="block"><br>
-
                     <h1>Dados de Usuário</h1>
                     
-                    <span>Usuário:</span> <span class="descricao">Será o usuário administrador da conta da empresa. Não deve conter sinais, acentos, cedilha ou espaços.</span>
-                    <input type="text" id="usuario" name="usuario" class="block" ng-model="usuario"><br>
+                    <span>E-mail:</span> <span class="descricao">Será o usuário administrador da conta da empresa.</span>
+                    <input type="text" id="email" name="email" class="block"><br>
 
                     <span>Senha:</span>
                     <input type="password" id="senha" name="senha" class="block"><br>
@@ -109,11 +106,6 @@ $(document).ready(function() {
 });
 
 function Cadastro($scope) {
-    $scope.$watch('usuario', function() {
-        var newval = valid($scope.usuario, 'special');
-        $scope.usuario = newval;
-    }); 
-
     $scope.$watch('subdominio', function() {
         var newval = valid($scope.subdominio, 'special');
         var novoval = newval.toLowerCase();
@@ -146,10 +138,9 @@ $('#btn').click(function() {
     if ($('#cidade').val() === "") {$('#erro').show(); $('#erro').html('Por favor, informe a cidade da Empresa.'); return false;}
     if ($('#uf').val() === "") {$('#erro').show(); $('#erro').html('Por favor, informe o estado da Empresa.'); return false;}
     if ($('#telefone').val() === "") {$('#erro').show(); $('#erro').html('Por favor, informe o telefone da Empresa.'); return false;}
+    
     if ($('#email').val() === "" || !checarEmail($('#email').val())) {$('#erro').show(); $('#erro').html('Por favor, informe um endereço de e-mail para contato.'); return false;}
-
-    if ($('#usuario').val() === "") {$('#erro').show(); $('#erro').html('Por favor, crie um usuário administrador.'); return false;}
-    if (! validarUsuario($('#usuario').val())) {$('#erro').show(); $('#erro').html('Este usuário já existe.'); return false;}
+    if (! validarUsuario($('#email').val())) {$('#erro').show(); $('#erro').html('Este e-mail já está cadastrado.'); return false;}
     if ($('#senha').val() === "") {$('#erro').show(); $('#erro').html('Por favor, crie uma senha.'); return false;}
     if ($('#confirma').val() === "") {$('#erro').show(); $('#erro').html('Por favor, repita a senha.'); return false;}
 
@@ -225,8 +216,8 @@ function validarCNPJ(cnpj) {
     
 }
 
-function validarUsuario(usuario) {
-    $.post('ajax_usuario.php', {usuario: usuario}, function(data) {
+function validarUsuario(email) {
+    $.post('ajax_usuario.php', {email: email}, function(data) {
         if (data === 'true') return true;
         else return false;
     });
@@ -240,7 +231,6 @@ if (isset ($_POST['empresa'])) {
 	
 	$endereco = $_POST['logradouro'].", ".$_POST['nro'];
 	
-	$usuario = preg_replace('/[^a-z0-9]/i', '', $_POST['usuario']);
 	
 	if ($_POST['senha'] == $_POST['confirma']) {
 		$senha = md5($_POST['senha']);
@@ -260,8 +250,8 @@ if (isset ($_POST['empresa'])) {
 	$db = Database::instance('mobile_provider');
     
     $sql = "insert into clientes 
-    	(empresa, cnpj, endereco, email, complemento, cidade, uf, telefone, email, usuario, senha, subdominio) 
-    	values (:empresa, :cnpj, :endereco, :complemento, :cidade, :uf, :telefone, :email, :usuario, :senha, null)";
+    	(empresa, cnpj, endereco, email, complemento, cidade, uf, telefone, email, senha, subdominio) 
+    	values (:empresa, :cnpj, :endereco, :complemento, :cidade, :uf, :telefone, :email, :senha, null)";
     $query = $db->prepare($sql);
     $success = $query->execute(array(
     	':empresa' => $_POST['empresa'],
@@ -271,8 +261,7 @@ if (isset ($_POST['empresa'])) {
     	':cidade' => $_POST['cidade'],
     	':uf' => $_POST['uf'],
     	':telefone' => $_POST['telefone'],
-   		':email' => $_POST['email'],
-    	':usuario' => $usuario,
+   	':email' => $_POST['email'],
     	':senha' => $senha,
     ));
     
